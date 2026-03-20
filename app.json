@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "name": "ShieldRoute",
+    "slug": "shield-route",
+    "version": "1.0.0",
+    "sdkVersion": "54.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.devtrails.shieldroute",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "ShieldRoute needs location to verify disaster zones.",
+        "NSFaceIDUsageDescription": "ShieldRoute uses biometrics for secure login."
+      }
+    },
+    "android": {
+      "package": "com.devtrails.shieldroute",
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "USE_BIOMETRIC"
+      ]
+    },
+    "plugins": [
+      "expo-local-authentication",
+      "expo-location"
+    ]
+  }
+}
