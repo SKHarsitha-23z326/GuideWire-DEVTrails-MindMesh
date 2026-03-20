@@ -1,0 +1,79 @@
+Since you are using a local backend (Node.js) and a mobile frontend (Expo), you need to give the judges a very clear, step-by-step guide. If they can't run it, they can't grade it.
+
+Create a file named INSTRUCTIONS.txt (or RUN_GUIDE.md) and paste this exact content:
+
+🛡️ SHIELDROUTE: STEP-BY-STEP RUN GUIDE
+To run this project locally for testing and evaluation, follow these steps in order.
+
+1. PREREQUISITES
+Node.js (v18 or higher) installed on your machine.
+
+Expo Go app installed on your physical Android/iOS device.
+
+Supabase Account with a profiles table created.
+
+OpenWeatherMap API Key (Free tier).
+
+2. BACKEND SETUP (The "Judge" Server)
+Open your terminal in the /backend folder.
+
+Install dependencies:
+
+Bash
+npm install express axios @supabase/supabase-js
+Open server.js and update these lines:
+
+supabaseUrl: Your Supabase Project URL.
+
+supabaseKey: Your Service Role Key.
+
+WEATHER_API_KEY: Your 32-character OpenWeather API key.
+
+Start the server:
+
+Bash
+node server.js
+Note: Ensure your laptop and mobile phone are on the same Wi-Fi network.
+
+3. MOBILE APP SETUP (The Frontend)
+Open your terminal in the root project folder.
+
+Install dependencies:
+
+Bash
+npx expo install expo-sensors expo-location expo-local-authentication
+CRITICAL STEP: Open App.js and find the BACKEND_URL variable.
+
+Replace 192.168.1.XX with your laptop’s actual IPv4 Address.
+
+(To find your IP: Type ipconfig in Windows CMD or ifconfig in Mac Terminal).
+
+Start the app:
+
+Bash
+npx expo start
+Scan the QR Code using the Expo Go app on your phone.
+
+4. HOW TO TEST THE "PROPER LOGIC"
+Login: Enter Partner ID ravi_01 (Ensure this ID exists in your Supabase table).
+
+Biometrics: Complete the fingerprint/face verification.
+
+Trigger Claim: Click "CHECK FOR RAIN PAYOUT".
+
+Physical Audit: You will see a 3-second countdown.
+
+ACTION: Shake the phone vigorously. This simulates being in a storm/moving.
+
+The Verdict:
+
+If it is actually raining at your GPS location: The app will show "Success" and update your wallet.
+
+If it is sunny: The app will show "Rejected" because the Weather API returned 0mm rain.
+
+If you don't shake the phone: The app will show "Rejected" due to "Fraud detected: Phone static."
+
+5. TROUBLESHOOTING
+"Partner Not Found": Ensure your Supabase table is populated with the SQL queries provided in the README.
+
+Network Error: Check if your Laptop Firewall is blocking port 3000 or if your phone switched to Mobile Data (must be on same Wi-Fi).
